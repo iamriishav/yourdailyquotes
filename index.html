@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/Assets/images/quote.png" type="image/x-icon">
+    <meta name="description" content="your quotes is a website which provides daily motivational quotes to the user">
+    <link rel="stylesheet" href="style.css">
+    <title>Your Quotes</title>
+</head>
+
+<body>
+    <div id="particles-js">
+    </div>
+    <div class="container">
+        <h2>Quote of the day</h2>
+        <blockquote id="quote">Loading...</blockquote>
+        <span id="author">Loading...</span>
+        <div class="button">
+            <button onclick="getquote(api)">New Quote</button>
+            <button id="copy">Copy Quote</button>
+        </div>
+    </div>
+    <script>
+        const quote = document.getElementById("quote");
+        const author = document.getElementById("author");
+        const api = "https://api.quotable.io/random";
+
+        async function getquote(url) {
+            const response = await fetch(url);
+            var data = await response.json();
+            quote.innerHTML = data.content;
+            author.innerHTML = data.author;
+        }
+
+        getquote(api);
+    </script>
+    <script>
+        const copyBtn = document.getElementById('copy');
+        const dynamicData = document.getElementById('quote');
+
+        copyBtn.addEventListener('click', function () {
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = dynamicData.innerText;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+        });
+    </script>
+    <script>
+        const copy = document.getElementById("copy");
+        copy.onclick = function () {
+            copy.innerText = "Copied!";
+
+            setTimeout(function () {
+                copy.innerText = "Copy Quote";
+            }, 1000);
+        };
+    </script>
+    <script src="/js/particles.js"></script>
+    <script>
+        particlesJS("particles-js", { "particles": { "number": { "value": 6, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#1b1e34" }, "shape": { "type": "polygon", "stroke": { "width": 0, "color": "#000" }, "polygon": { "nb_sides": 6 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.3, "random": true, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 160, "random": false, "anim": { "enable": true, "speed": 10, "size_min": 40, "sync": false } }, "line_linked": { "enable": false, "distance": 200, "color": "#ffffff", "opacity": 1, "width": 2 }, "move": { "enable": true, "speed": 8, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false, "mode": "grab" }, "onclick": { "enable": false, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true }); var count_particles, stats, update;
+        //  stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function () { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+    </script>
+    <script>
+        document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+        function ctrlShiftKey(e, keyCode) {
+            return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+        }
+
+        document.onkeydown = (e) => {
+            if (
+                event.keyCode === 123 ||
+                ctrlShiftKey(e, "I") ||
+                ctrlShiftKey(e, "J") ||
+                ctrlShiftKey(e, "C") ||
+                (e.ctrlKey && e.keyCode === "U".charCodeAt(0))
+            )
+                return false;
+        };
+    </script>
+</body>
+
+</html>

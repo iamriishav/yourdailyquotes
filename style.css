@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+}
+
+#particles-js {
+    background-color: rgba(44, 46, 67, 1);
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    background: rgb(211, 210, 210);
+    position: absolute;
+    padding: 40px;
+    width: 40vw;
+    max-height: 80vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px 0 rgb(161, 149, 72);
+}
+
+.container h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.container h2::after {
+    content: '';
+    position: absolute;
+    width: 20%;
+    height: 2px;
+    left: 40%;
+    bottom: -5px;
+    background: rgb(6, 64, 126);
+}
+
+.container blockquote {
+    font-size: 30px;
+    min-height: 110px;
+    text-align: center;
+}
+
+.container blockquote::before {
+    content: '“';
+}
+
+.container blockquote::after {
+    content: '”';
+}
+
+.container span {
+    display: block;
+    float: right;
+    margin-top: 20px;
+    font-size: 20px;
+    position: relative;
+}
+
+.container span::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    top: 50%;
+    left: -20px;
+    background: rgb(6, 64, 126);
+}
+
+.container div {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    width: 100%;
+}
+
+.container button {
+    background: rgb(6, 64, 126);
+    color: #fff;
+    border-radius: 25px;
+    font-size: 15px;
+    border: 2px solid rgb(6, 64, 126);
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+
+.container button:hover {
+    background: transparent;
+    color: rgb(6, 64, 126);
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 80vw;
+    }
+
+    .container h2 {
+        font-size: 25px;
+        margin-bottom: 40px;
+    }
+
+    .container blockquote {
+        font-size: 20px;
+    }
+
+    .container span {
+        font-size: 15px;
+    }
+}
+
+@media only screen and ((min-width: 768px) and (max-width: 1024px)){
+    .container{
+        width: 50vw;
+    }
+}
+
+@media only screen and ((max-width: 768px)){
+    .container{
+        width: 80vw;
+    }
+}
